@@ -4,10 +4,10 @@ services:
     container_name: mysql_db
     restart: always         # automatically restart if container crashes
     environment:
-      MYSQL_ROOT_PASSWORD: Chidera123    # set root password
-      MYSQL_DATABASE:  django_db    # create a database at startup
-      MYSQL_USER: morata                # create a custom user
-      MYSQL_PASSWORD: Chidera123       # password for the custom user
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}   # set root password
+      MYSQL_DATABASE:   ${MYSQL_DATABASE}   # create a database at startup
+      MYSQL_USER:  ${MYSQL_USER}             # create a custom user
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}       # password for the custom user
     ports:
       - "3307:3306"          # expose MySQL port so you can connect locally
     volumes:
