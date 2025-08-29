@@ -1,0 +1,26 @@
+services:
+  mysql:
+    image: mysql:8.0        # MySQL version (can change if needed)
+    container_name: mysql_db
+    restart: always         # automatically restart if container crashes
+    environment:
+      MYSQL_ROOT_PASSWORD: Chidera123    # set root password
+      MYSQL_DATABASE:  django_db    # create a database at startup
+      MYSQL_USER: morata                # create a custom user
+      MYSQL_PASSWORD: Chidera123       # password for the custom user
+    ports:
+      - "3307:3306"          # expose MySQL port so you can connect locally
+    volumes:
+      - mysql_data:/var/lib/mysql   # persist database data
+  adminer:
+    image : adminer
+    container_name : adminer_ui  
+    ports:
+     - "8080:8080"
+    depends_on:
+     - mysql
+     
+
+
+volumes:
+  mysql_data:
